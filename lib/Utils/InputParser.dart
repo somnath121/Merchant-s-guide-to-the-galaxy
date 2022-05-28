@@ -1,7 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:merchant/Model/Metal.dart';
 import 'package:merchant/Model/Question.dart';
 import 'package:merchant/Model/Unit.dart';
-import 'package:merchant/QuestionFactory.dart';
+import 'package:merchant/Utils/QuestionFactory.dart';
 import 'package:merchant/Utils/MetalValidator.dart';
 import 'package:merchant/Utils/QuestionValidator.dart';
 import 'package:merchant/Utils/RomanConverter.dart';
@@ -50,7 +51,9 @@ class InputParser {
     int? value1 = RomanToDecimalConverter()
         .convert(RomanConverter().convert(splittedValues[0], " ", units));
     int value2 = int.parse(splittedValues[1].split(" ")[2]);
-    print(value2 ~/ value1);
+    if (kDebugMode) {
+      print(value2 ~/ value1);
+    }
     return value2 ~/ value1;
   }
 }
